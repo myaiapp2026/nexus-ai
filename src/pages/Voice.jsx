@@ -1,38 +1,23 @@
-import AppShell from "../layouts/AppShell"
+import AppShell from "../components/AppShell"
 
 export default function Voice() {
   return (
     <AppShell>
-      <div style={{
-        display:"grid",
-        placeItems:"center",
-        minHeight:"70vh"
-      }}>
-        <div style={{
-          textAlign:"center"
-        }}>
+      <h1 className="page-title gradient-text">AI Voice</h1>
+
+      <div className="glass card" style={{minHeight:560,display:"grid",placeItems:"center"}}>
+        <div style={{textAlign:"center"}}>
           <div style={{
-            width:"220px",
-            height:"220px",
+            width:220,
+            height:220,
             borderRadius:"999px",
-            background:"radial-gradient(circle,#9333ea,#2563eb)",
-            boxShadow:"0 0 120px #9333ea",
-            margin:"0 auto 30px"
+            background:"radial-gradient(circle,#fff,#a78bfa,#7c3aed,#2563eb)",
+            boxShadow:"0 0 120px rgba(124,58,237,.8)",
+            margin:"0 auto 28px"
           }} />
 
-          <h1 style={{
-            fontSize:"52px",
-            marginBottom:"14px"
-          }}>
-            AI Voice Assistant
-          </h1>
-
-          <p style={{
-            color:"#94a3b8",
-            fontSize:"18px"
-          }}>
-            Listening mode initialized.
-          </p>
+          <h2>Listening...</h2>
+          <p className="muted" style={{marginTop:8}}>Tap to stop</p>
         </div>
       </div>
     </AppShell>

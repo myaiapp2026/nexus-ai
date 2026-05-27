@@ -1,117 +1,104 @@
-import AppShell from "../layouts/AppShell"
-import { motion } from "framer-motion"
-import { Bot, Image, Code2, Zap } from "lucide-react"
+import AppShell from "../components/AppShell"
 
 export default function Dashboard() {
+
   const stats = [
-    { title:"AI Agents", value:"24", icon:Bot },
-    { title:"Images Generated", value:"1,284", icon:Image },
-    { title:"Code Sessions", value:"643", icon:Code2 },
-    { title:"Automation Runs", value:"87%", icon:Zap }
+    ["AI Agents","24"],
+    ["Messages","24,580"],
+    ["Images Generated","2,340"],
+    ["Code Runs","1,423"]
   ]
 
   return (
     <AppShell>
-      <section style={{marginBottom:"34px"}}>
-        <motion.h1
-          initial={{opacity:0,y:20}}
-          animate={{opacity:1,y:0}}
-          className="gradient-text hero-glow"
-          style={{
-            fontSize:"64px",
-            fontWeight:"900",
-            letterSpacing:"-2px",
-            marginBottom:"14px"
-          }}
-        >
-          NEXUS AI OS
-        </motion.h1>
 
-        <p style={{
-          color:"#94a3b8",
-          fontSize:"18px",
-          maxWidth:"720px",
-          lineHeight:"1.7"
-        }}>
-          Premium cinematic AI workspace for chat, image generation, code, agents,
-          notes, voice and automation.
-        </p>
-      </section>
+      <h1 className="page-title gradient-text">
+        NEXUS AI OS
+      </h1>
 
-      <div style={{
-        display:"grid",
-        gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",
-        gap:"22px",
-        marginBottom:"28px"
-      }}>
-        {stats.map((item,index)=>{
-          const Icon = item.icon
-          return (
-            <motion.div
-              key={item.title}
-              whileHover={{y:-8,scale:1.02}}
-              className="cinematic-card neon-border"
-              style={{
-                borderRadius:"30px",
-                padding:"26px",
-                position:"relative"
-              }}
-            >
-              <Icon size={26} color="#c084fc" />
-              <p style={{color:"#94a3b8",marginTop:"18px",marginBottom:"10px"}}>
-                {item.title}
-              </p>
-              <h2 style={{fontSize:"46px",fontWeight:"900"}}>
-                {item.value}
-              </h2>
-            </motion.div>
-          )
-        })}
+      <p className="muted" style={{marginBottom:24}}>
+        Premium cinematic AI workspace.
+      </p>
+
+      <div className="grid-4">
+
+        {stats.map(([title,value]) => (
+          <div
+            key={title}
+            className="glass card"
+          >
+            <p className="muted">{title}</p>
+
+            <h2 style={{
+              fontSize:52,
+              marginTop:16,
+              fontWeight:900
+            }}>
+              {value}
+            </h2>
+          </div>
+        ))}
+
       </div>
 
-      <div style={{
-        display:"grid",
-        gridTemplateColumns:"1.5fr 1fr",
-        gap:"24px"
-      }}>
-        <div className="cinematic-card" style={{borderRadius:"34px",padding:"28px"}}>
-          <h2 style={{fontSize:"28px",marginBottom:"22px"}}>Command Center</h2>
+      <div
+        className="grid-2"
+        style={{marginTop:22}}
+      >
+
+        <div
+          className="glass card"
+          style={{minHeight:320}}
+        >
+          <h2 style={{marginBottom:20}}>
+            System Activity
+          </h2>
 
           <div style={{
-            height:"330px",
-            borderRadius:"30px",
-            background:"linear-gradient(135deg,#9333ea,#2563eb,#06b6d4)",
+            height:220,
+            borderRadius:24,
+            background:"linear-gradient(135deg,#7c3aed,#2563eb)",
+            opacity:.9
+          }} />
+        </div>
+
+        <div
+          className="glass card"
+          style={{minHeight:320}}
+        >
+          <h2 style={{marginBottom:20}}>
+            AI Assistant
+          </h2>
+
+          <div style={{
             display:"grid",
-            placeItems:"center",
-            fontSize:"34px",
-            fontWeight:"900",
-            boxShadow:"0 0 90px rgba(147,51,234,.35)"
+            gap:14
           }}>
-            AI CORE ONLINE
+
+            {[
+              "Summarize today",
+              "Generate image",
+              "Analyze data",
+              "Create workflow"
+            ].map(item => (
+              <div
+                key={item}
+                className="glass"
+                style={{
+                  padding:18,
+                  borderRadius:18
+                }}
+              >
+                {item}
+              </div>
+            ))}
+
           </div>
+
         </div>
 
-        <div className="cinematic-card" style={{borderRadius:"34px",padding:"28px"}}>
-          <h2 style={{fontSize:"28px",marginBottom:"18px"}}>Live Activity</h2>
-
-          {[
-            "Generated futuristic dashboard",
-            "AI agent completed workflow",
-            "Image studio rendered concept",
-            "Code IDE optimized component"
-          ].map(item=>(
-            <div key={item} style={{
-              padding:"16px",
-              borderRadius:"18px",
-              background:"rgba(255,255,255,.05)",
-              marginBottom:"14px",
-              color:"#cbd5e1"
-            }}>
-              ● {item}
-            </div>
-          ))}
-        </div>
       </div>
+
     </AppShell>
   )
 }

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { lazy, Suspense } from "react"
 
+const Landing = lazy(() => import("./pages/Landing"))
 const Dashboard = lazy(() => import("./pages/Dashboard"))
 const Chat = lazy(() => import("./pages/Chat"))
 const ImageGenerator = lazy(() => import("./pages/ImageGenerator"))
@@ -12,21 +13,8 @@ const Settings = lazy(() => import("./pages/Settings"))
 const Profile = lazy(() => import("./pages/Profile"))
 const Notifications = lazy(() => import("./pages/Notifications"))
 
-function Loader() {
-  return (
-    <div style={{
-      minHeight:"100vh",
-      background:"#050816",
-      color:"#c084fc",
-      display:"grid",
-      placeItems:"center",
-      fontFamily:"Arial",
-      fontSize:"28px",
-      fontWeight:"800"
-    }}>
-      Loading NEXUS AI...
-    </div>
-  )
+function Loader(){
+  return <div className="loader">NEXUS AI Loading...</div>
 }
 
 export default function App() {
@@ -34,7 +22,7 @@ export default function App() {
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/image" element={<ImageGenerator />} />
@@ -45,6 +33,7 @@ export default function App() {
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

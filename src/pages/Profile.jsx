@@ -1,23 +1,58 @@
-import AppShell from "../layouts/AppShell"
+import AppShell from "../components/AppShell"
 
 export default function Profile() {
   return (
     <AppShell>
-      <h1 className="gradient-text" style={{fontSize:"52px",marginBottom:"25px"}}>
-        Profile
-      </h1>
+      <h1 className="page-title gradient-text">Profile</h1>
 
-      <div className="glass" style={{padding:"30px",borderRadius:"30px",maxWidth:"800px"}}>
-        <div style={{width:"110px",height:"110px",borderRadius:"999px",background:"linear-gradient(135deg,#9333ea,#2563eb)",marginBottom:"20px"}} />
+      <div className="grid-2">
 
-        <h2>Souban</h2>
-        <p style={{color:"#94a3b8",marginTop:"8px"}}>
-          NEXUS AI workspace owner
-        </p>
+        <div className="glass card">
+          <div style={{
+            width:120,
+            height:120,
+            borderRadius:"999px",
+            background:"linear-gradient(135deg,#7c3aed,#2563eb)",
+            marginBottom:22
+          }} />
 
-        <button style={{marginTop:"24px",padding:"14px 22px",borderRadius:"16px",border:"none",background:"linear-gradient(135deg,#9333ea,#2563eb)",color:"white",fontWeight:"800"}}>
-          Edit Profile
-        </button>
+          <h2>Souban</h2>
+
+          <p className="muted" style={{marginTop:8}}>
+            Founder of NEXUS AI
+          </p>
+
+          <button className="btn" style={{marginTop:20}}>
+            Edit Profile
+          </button>
+        </div>
+
+        <div className="glass card">
+          <h2 style={{marginBottom:20}}>Workspace Stats</h2>
+
+          {[
+            ["AI Chats","24,580"],
+            ["Images","2,340"],
+            ["Projects","128"],
+            ["Agents","24"]
+          ].map(([k,v])=>(
+            <div
+              key={k}
+              className="glass"
+              style={{
+                padding:18,
+                borderRadius:18,
+                marginBottom:14,
+                display:"flex",
+                justifyContent:"space-between"
+              }}
+            >
+              <span>{k}</span>
+              <b>{v}</b>
+            </div>
+          ))}
+        </div>
+
       </div>
     </AppShell>
   )
