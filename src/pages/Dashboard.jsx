@@ -1,196 +1,117 @@
 import AppShell from "../layouts/AppShell"
 import { motion } from "framer-motion"
-
-const stats = [
-  { title:"AI Agents", value:"24" },
-  { title:"GPU Usage", value:"87%" },
-  { title:"Generated Images", value:"1,284" },
-  { title:"Code Sessions", value:"643" }
-]
+import { Bot, Image, Code2, Zap } from "lucide-react"
 
 export default function Dashboard() {
+  const stats = [
+    { title:"AI Agents", value:"24", icon:Bot },
+    { title:"Images Generated", value:"1,284", icon:Image },
+    { title:"Code Sessions", value:"643", icon:Code2 },
+    { title:"Automation Runs", value:"87%", icon:Zap }
+  ]
+
   return (
     <AppShell>
-
-      <motion.div
-        initial={{opacity:0,y:20}}
-        animate={{opacity:1,y:0}}
-        transition={{duration:.6}}
-        style={{
-          marginBottom:"30px"
-        }}
-      >
-        <h1
-          className="gradient-text"
+      <section style={{marginBottom:"34px"}}>
+        <motion.h1
+          initial={{opacity:0,y:20}}
+          animate={{opacity:1,y:0}}
+          className="gradient-text hero-glow"
           style={{
-            fontSize:"62px",
+            fontSize:"64px",
             fontWeight:"900",
-            marginBottom:"12px",
-            letterSpacing:"-2px"
+            letterSpacing:"-2px",
+            marginBottom:"14px"
           }}
         >
-          NEXUS AI
-        </h1>
+          NEXUS AI OS
+        </motion.h1>
 
         <p style={{
           color:"#94a3b8",
           fontSize:"18px",
-          maxWidth:"700px",
-          lineHeight:"1.6"
+          maxWidth:"720px",
+          lineHeight:"1.7"
         }}>
-          Futuristic cinematic AI operating system with intelligent automation,
-          immersive workflows and premium realtime experiences.
+          Premium cinematic AI workspace for chat, image generation, code, agents,
+          notes, voice and automation.
         </p>
-      </motion.div>
+      </section>
 
       <div style={{
         display:"grid",
-        gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",
+        gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",
         gap:"22px",
         marginBottom:"28px"
       }}>
-        {stats.map((item,index)=>(
-          <motion.div
-            key={index}
-            whileHover={{y:-6,scale:1.02}}
-            className="glass"
-            style={{
-              borderRadius:"28px",
-              padding:"28px",
-              position:"relative",
-              overflow:"hidden"
-            }}
-          >
-            <div style={{
-              position:"absolute",
-              inset:0,
-              background:"linear-gradient(135deg,#9333ea22,#2563eb11)",
-              opacity:.9
-            }} />
-
-            <div style={{position:"relative",zIndex:2}}>
-              <p style={{
-                color:"#94a3b8",
-                marginBottom:"12px",
-                fontSize:"15px"
-              }}>
+        {stats.map((item,index)=>{
+          const Icon = item.icon
+          return (
+            <motion.div
+              key={item.title}
+              whileHover={{y:-8,scale:1.02}}
+              className="cinematic-card neon-border"
+              style={{
+                borderRadius:"30px",
+                padding:"26px",
+                position:"relative"
+              }}
+            >
+              <Icon size={26} color="#c084fc" />
+              <p style={{color:"#94a3b8",marginTop:"18px",marginBottom:"10px"}}>
                 {item.title}
               </p>
-
-              <h2 style={{
-                fontSize:"52px",
-                fontWeight:"800"
-              }}>
+              <h2 style={{fontSize:"46px",fontWeight:"900"}}>
                 {item.value}
               </h2>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          )
+        })}
       </div>
 
       <div style={{
         display:"grid",
-        gridTemplateColumns:"2fr 1fr",
-        gap:"22px"
+        gridTemplateColumns:"1.5fr 1fr",
+        gap:"24px"
       }}>
-
-        <motion.div
-          initial={{opacity:0}}
-          animate={{opacity:1}}
-          transition={{delay:.2}}
-          className="glass"
-          style={{
-            borderRadius:"32px",
-            padding:"28px",
-            minHeight:"420px",
-            position:"relative",
-            overflow:"hidden"
-          }}
-        >
-          <div style={{
-            display:"flex",
-            justifyContent:"space-between",
-            marginBottom:"24px"
-          }}>
-            <h2 style={{fontSize:"28px"}}>
-              System Activity
-            </h2>
-
-            <div style={{
-              padding:"10px 16px",
-              borderRadius:"999px",
-              background:"#22c55e22",
-              color:"#4ade80",
-              fontWeight:"700"
-            }}>
-              ONLINE
-            </div>
-          </div>
+        <div className="cinematic-card" style={{borderRadius:"34px",padding:"28px"}}>
+          <h2 style={{fontSize:"28px",marginBottom:"22px"}}>Command Center</h2>
 
           <div style={{
-            height:"300px",
-            borderRadius:"28px",
-            background:"linear-gradient(135deg,#9333ea,#2563eb)",
+            height:"330px",
+            borderRadius:"30px",
+            background:"linear-gradient(135deg,#9333ea,#2563eb,#06b6d4)",
             display:"grid",
             placeItems:"center",
-            fontSize:"36px",
+            fontSize:"34px",
             fontWeight:"900",
-            letterSpacing:"1px",
-            boxShadow:"0 0 80px rgba(147,51,234,.35)"
+            boxShadow:"0 0 90px rgba(147,51,234,.35)"
           }}>
-            NEXUS CORE ACTIVE
+            AI CORE ONLINE
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{opacity:0}}
-          animate={{opacity:1}}
-          transition={{delay:.3}}
-          className="glass"
-          style={{
-            borderRadius:"32px",
-            padding:"28px",
-            display:"flex",
-            flexDirection:"column",
-            gap:"20px"
-          }}
-        >
-          <h2 style={{
-            fontSize:"28px"
-          }}>
-            AI Assistant
-          </h2>
+        <div className="cinematic-card" style={{borderRadius:"34px",padding:"28px"}}>
+          <h2 style={{fontSize:"28px",marginBottom:"18px"}}>Live Activity</h2>
 
-          <div style={{
-            padding:"20px",
-            borderRadius:"24px",
-            background:"rgba(255,255,255,.05)",
-            lineHeight:"1.7",
-            color:"#cbd5e1"
-          }}>
-            Generate images, automate workflows,
-            analyze documents and interact with
-            intelligent AI systems.
-          </div>
-
-          <button style={{
-            border:"none",
-            background:"linear-gradient(135deg,#9333ea,#2563eb)",
-            color:"white",
-            padding:"18px",
-            borderRadius:"20px",
-            fontWeight:"800",
-            fontSize:"16px",
-            cursor:"pointer",
-            boxShadow:"0 0 40px rgba(147,51,234,.4)"
-          }}>
-            Launch Workspace
-          </button>
-
-        </motion.div>
-
+          {[
+            "Generated futuristic dashboard",
+            "AI agent completed workflow",
+            "Image studio rendered concept",
+            "Code IDE optimized component"
+          ].map(item=>(
+            <div key={item} style={{
+              padding:"16px",
+              borderRadius:"18px",
+              background:"rgba(255,255,255,.05)",
+              marginBottom:"14px",
+              color:"#cbd5e1"
+            }}>
+              ● {item}
+            </div>
+          ))}
+        </div>
       </div>
-
     </AppShell>
   )
 }
