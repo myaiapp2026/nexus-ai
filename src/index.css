@@ -7,8 +7,71 @@
 body{
   background:#050816;
   color:white;
-  font-family:'Inter',sans-serif;
+  font-family:'Inter',Arial,sans-serif;
   overflow-x:hidden;
+}
+
+.app-shell{
+  min-height:100vh;
+  background:#050816;
+  color:white;
+  display:flex;
+  position:relative;
+  overflow:hidden;
+}
+
+.app-main{
+  flex:1;
+  padding:30px;
+  overflow-y:auto;
+  position:relative;
+  z-index:5;
+}
+
+.mesh{
+  position:fixed;
+  border-radius:999px;
+  filter:blur(90px);
+  opacity:.75;
+  pointer-events:none;
+  z-index:0;
+}
+
+.mesh-one{
+  width:520px;
+  height:520px;
+  top:-160px;
+  right:-120px;
+  background:radial-gradient(circle,#9333ea,#2563eb22,transparent 70%);
+  animation:pulse 8s infinite;
+}
+
+.mesh-two{
+  width:420px;
+  height:420px;
+  bottom:-120px;
+  left:180px;
+  background:radial-gradient(circle,#2563eb,#9333ea11,transparent 70%);
+  animation:float 9s infinite;
+}
+
+.mesh-three{
+  width:300px;
+  height:300px;
+  top:45%;
+  right:25%;
+  background:radial-gradient(circle,#06b6d4,#9333ea11,transparent 70%);
+  opacity:.35;
+}
+
+.noise{
+  position:fixed;
+  inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:48px 48px;
+  opacity:.18;
+  pointer-events:none;
+  z-index:1;
 }
 
 .gradient-text{
@@ -23,19 +86,6 @@ body{
   backdrop-filter:blur(24px);
 }
 
-::-webkit-scrollbar{
-  width:8px;
-}
-
-::-webkit-scrollbar-thumb{
-  background:#9333ea;
-  border-radius:999px;
-}
-
-input::placeholder{
-  color:#94a3b8;
-}
-
 button{
   transition:all .3s ease;
 }
@@ -45,14 +95,50 @@ button:hover{
   opacity:.95;
 }
 
+input::placeholder{
+  color:#94a3b8;
+}
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#9333ea;
+  border-radius:999px;
+}
+
 @keyframes pulse{
   0%{transform:scale(1);}
-  50%{transform:scale(1.1);}
+  50%{transform:scale(1.12);}
   100%{transform:scale(1);}
 }
 
 @keyframes float{
-  0%{transform:translateY(0px);}
-  50%{transform:translateY(-12px);}
-  100%{transform:translateY(0px);}
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-18px);}
+  100%{transform:translateY(0);}
+}
+
+@media(max-width:768px){
+  aside{
+    width:88px !important;
+    padding:14px !important;
+  }
+
+  aside h1{
+    font-size:16px !important;
+  }
+
+  aside p{
+    display:none !important;
+  }
+
+  main{
+    padding:16px !important;
+  }
+
+  h1{
+    font-size:36px !important;
+  }
 }
