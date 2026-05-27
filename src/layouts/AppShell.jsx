@@ -7,7 +7,10 @@ export default function AppShell({ children }) {
   return (
     <div className="app-shell">
       <CinematicBackground />
-      <Sidebar />
+
+      <div className="sidebar-wrap">
+        <Sidebar />
+      </div>
 
       <main className="app-main">
         <Topbar />

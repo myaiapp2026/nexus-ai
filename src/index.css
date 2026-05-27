@@ -142,3 +142,53 @@ input::placeholder{
     font-size:36px !important;
   }
 }
+
+@media(max-width:900px){
+  .app-shell{
+    display:block;
+    overflow-x:hidden;
+  }
+
+  .sidebar-wrap{
+    width:100%;
+    position:relative;
+    z-index:10;
+  }
+
+  aside{
+    width:100% !important;
+    min-height:auto !important;
+    display:flex !important;
+    overflow-x:auto !important;
+    gap:12px !important;
+    padding:14px !important;
+    border-right:none !important;
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+  }
+
+  aside h1,
+  aside p{
+    display:none !important;
+  }
+
+  aside > div{
+    display:flex !important;
+    gap:10px !important;
+  }
+
+  aside a{
+    min-width:max-content !important;
+  }
+
+  .app-main{
+    padding:16px !important;
+  }
+
+  .app-main > div{
+    grid-template-columns:1fr !important;
+  }
+
+  h1{
+    font-size:38px !important;
+  }
+}
