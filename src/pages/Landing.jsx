@@ -1,82 +1,29 @@
-import { Link } from "react-router-dom"
+import { Background } from "../components/background";
+import { Navbar } from "../components/navbar";
+import { Hero } from "../components/hero";
+import { Features } from "../components/features";
+import { Tools } from "../components/tools";
+import { Reviews } from "../components/reviews";
+import { Pricing } from "../components/pricing";
+import { CTA, Footer } from "../components/cta-footer";
+import { ThemeProvider } from "../components/theme";
 
 export default function Landing() {
   return (
-    <div style={{
-      minHeight:"100vh",
-      display:"grid",
-      placeItems:"center",
-      position:"relative",
-      overflow:"hidden",
-      padding:"24px"
-    }}>
-      <div className="bg-mesh"></div>
-      <div className="bg-grid"></div>
+    <ThemeProvider>
+      <Background />
+      <Navbar />
 
-      <div
-        className="glass"
-        style={{
-          position:"relative",
-          zIndex:2,
-          maxWidth:1000,
-          width:"100%",
-          padding:"60px",
-          borderRadius:"36px",
-          textAlign:"center"
-        }}
-      >
-        <h1
-          className="gradient-text"
-          style={{
-            fontSize:"82px",
-            fontWeight:"900",
-            lineHeight:1,
-            marginBottom:"22px"
-          }}
-        >
-          NEXUS AI
-        </h1>
+      <main>
+        <Hero />
+        <Features />
+        <Tools />
+        <Reviews />
+        <Pricing />
+        <CTA />
+      </main>
 
-        <p
-          className="muted"
-          style={{
-            fontSize:"20px",
-            maxWidth:700,
-            margin:"0 auto",
-            lineHeight:1.8
-          }}
-        >
-          Futuristic cinematic AI operating system for chat,
-          code, images, agents and automation.
-        </p>
-
-        <div style={{
-          marginTop:"36px",
-          display:"flex",
-          justifyContent:"center",
-          gap:"16px",
-          flexWrap:"wrap"
-        }}>
-          <Link to="/dashboard">
-            <button className="btn">
-              Launch Workspace
-            </button>
-          </Link>
-
-          <button
-            className="glass"
-            style={{
-              borderRadius:"16px",
-              padding:"14px 18px",
-              border:"none",
-              color:"white"
-            }}
-          >
-            Watch Demo
-          </button>
-        </div>
-
-      </div>
-    </div>
-  )
+      <Footer />
+    </ThemeProvider>
+  );
 }
