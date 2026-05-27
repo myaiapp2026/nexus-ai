@@ -192,3 +192,37 @@ input::placeholder{
     font-size:38px !important;
   }
 }
+
+.cinematic-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(28px);
+  box-shadow:
+    0 20px 80px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.neon-border{
+  position:relative;
+  overflow:hidden;
+}
+
+.neon-border::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(135deg,#9333ea,#2563eb,#06b6d4);
+  opacity:.28;
+  z-index:-1;
+  filter:blur(18px);
+}
+
+.hero-glow{
+  text-shadow:0 0 40px rgba(147,51,234,.45);
+}
+
+@media(max-width:900px){
+  .hide-mobile{
+    display:none !important;
+  }
+}
